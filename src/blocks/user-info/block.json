@@ -1,0 +1,21 @@
+{
+	"apiVersion": 2,
+	"name": "oeu/user-info",
+	"title": "User Info",
+	"category": "widgets",
+	"description": "Display the current user's image, name, and option to log out.",
+	"textdomain": "outermost-edd-utilities",
+	"attributes": {
+		"imageLink": {
+			"type": "string"
+		},
+		"userNameLink": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false
+	},
+	"editorStyle": "oeu-styles"
+}

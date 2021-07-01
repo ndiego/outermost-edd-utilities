@@ -1,0 +1,38 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-oeu-user-info {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.wp-block-oeu-user-info .user-avatar {
+  margin-right: 1.5em;
+}
+
+.wp-block-oeu-user-info .user-avatar img {
+  border-radius: 100px;
+  margin-top: 5px;
+}
+
+.wp-block-oeu-user-info .welcome-message {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--secondary);
+  font-size: var(--wp--preset--font-size--small);
+}
+
+.wp-block-oeu-user-info .user-name {
+  margin: 10px 0 0;
+}
+
+.wp-block-oeu-user-info .logout-message {
+  color: var(--wp--preset--color--secondary);
+  font-size: 14px;
+  margin: 0;
+}
+
+/*# sourceMappingURL=index.css.map*/

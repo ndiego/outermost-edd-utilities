@@ -20,6 +20,34 @@
 
 defined( 'ABSPATH' ) || exit;
 
+
+function oeu_register_editor_scripts_styles() {
+
+	// Scripts.
+	$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
+
+	wp_enqueue_script(
+		'oeu-editor-scripts',
+		plugins_url( 'build/index.js', __FILE__ ),
+		$asset_file['dependencies'],
+		$asset_file['version']
+	);
+
+	// Styles.
+	//$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
+
+	wp_enqueue_style(
+		'oeu-editor-styles',
+		plugins_url( 'build/index.css', __FILE__ ),
+		array()
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'oeu_register_editor_scripts_styles' );
+
+//require_once plugin_dir_path( __FILE__ ) . 'src/blocks/user-info/index.php';
+include_once dirname( __FILE__ ) . '/src/blocks/user-info/index.php';
+
+
 /**
  * When the cart is empty, redirect to the pricing page.
  */
@@ -61,8 +89,6 @@ function oeu_edd_hide_from_search( $args ) {
 	return $args;
 }
 add_filter( 'edd_download_post_type_args', 'oeu_edd_hide_from_search' );
-
-
 
 /**
  * Redirect logged-in users to account page if they try and visit the login page
