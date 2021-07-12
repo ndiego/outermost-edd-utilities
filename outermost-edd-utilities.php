@@ -3,7 +3,7 @@
  * Plugin Name:         Outermost EDD Utilities
  * Plugin URI:          https://www.nickdiego.com
  * Description:         Useful utilities for EDD
- * Version:             0.1.0
+ * Version:             0.2.0
  * Requires at least:   5.5
  * Requires PHP:        5.6
  * Author:              Nick Diego
@@ -113,6 +113,8 @@ function oeu_redirect_members_to_login() {
   }
 }
 add_action( 'template_redirect', 'oeu_redirect_members_to_login' );
+
+
 
 // Filter the from email for all system emails
 function blox_filter_wp_mail_from( $email ){
