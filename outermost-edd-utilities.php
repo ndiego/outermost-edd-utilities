@@ -3,7 +3,7 @@
  * Plugin Name:         Outermost EDD Utilities
  * Plugin URI:          https://www.nickdiego.com
  * Description:         Useful utilities for EDD
- * Version:             0.3.0
+ * Version:             0.4.0
  * Requires at least:   5.5
  * Requires PHP:        5.6
  * Author:              Nick Diego

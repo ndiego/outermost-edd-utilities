@@ -10,7 +10,11 @@ Adds EDD utility functions and custom blocks.
 
 == Changelog ==
 
-= 0.2.0 - 2021-7-15 =
+= 0.4.0 - 2021-7-19 =
+
+* Added wrapper divs and custom messaging for the EDD checkout shortcode.
+
+= 0.3.0 - 2021-7-15 =
 
 * Update primary branch to be compatible with the GitHub updater plugin.
 
