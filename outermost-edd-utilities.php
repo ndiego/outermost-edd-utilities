@@ -128,3 +128,21 @@ function blox_filter_wp_mail_from_name( $from_name ){
 	return "Blox Support";
 }
 //add_filter( 'wp_mail_from_name', 'blox_filter_wp_mail_from_name' );
+
+/* Add wrapper around the edd_checkout_form_wrap div and add a header for renewals and discounts */
+function oeu_before_checkout_form_wrap() {
+	echo '<div class="edd_checkout_form_wrap_main"><h3>' . __( 'Renewals & Discounts', 'outermost-edd-utilities' ) . '</h3>';
+}
+add_action( 'edd_after_checkout_cart', 'oeu_before_checkout_form_wrap', 0 );
+
+/* Add the closing div for the new edd_checkout_form_wrap_main div */
+function oeu_after_checkout_form_wrap() {
+	echo '</div>';
+}
+add_action( 'edd_after_purchase_form', 'oeu_after_checkout_form_wrap', 0 );
+
+/* Add message before the purchase button */
+function oeu_edd_before_submit() {
+	echo '<h3>' . __( 'You\'re almost done!', 'outermost-edd-utilities' ) . '</h3>';
+}
+add_action( 'edd_purchase_form_before_submit', 'oeu_edd_before_submit', 0 );
