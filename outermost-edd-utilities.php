@@ -3,7 +3,7 @@
  * Plugin Name:         Outermost EDD Utilities
  * Plugin URI:          https://www.nickdiego.com
  * Description:         Useful utilities for EDD
- * Version:             0.4.0
+ * Version:             0.4.1
  * Requires at least:   5.5
  * Requires PHP:        5.6
  * Author:              Nick Diego
@@ -94,26 +94,41 @@ add_filter( 'edd_download_post_type_args', 'oeu_edd_hide_from_search' );
 /**
  * Redirect logged-in users to account page if they try and visit the login page
  */
-function oeu_redirect_login_to_members() {
+function oeu_redirect_login_to_account() {
 
-	if ( is_page('login') && is_user_logged_in() && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
+	if ( is_page('login') && is_user_logged_in() && $_SERVER['PHP_SELF'] !== '/wp-admin/admin-ajax.php' ) {
 		wp_redirect( '/account/', 301 );
 		exit;
   }
 }
-add_action( 'template_redirect', 'oeu_redirect_login_to_members' );
+add_action( 'template_redirect', 'oeu_redirect_login_to_account' );
 
 /**
  * Redirect logged-out users to the login page is they try and visit the account page
  */
-function oeu_redirect_members_to_login() {
+function oeu_redirect_account_to_login() {
 
-	if ( is_page('account') && ! is_user_logged_in() && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
-		wp_redirect( '/login/', 301 );
-		exit;
-  }
+	$slug = 'account';
+
+	if ( ! is_user_logged_in() ) {
+
+		// If we are already on the Account page, redirect.
+		if ( is_page( $slug ) && $_SERVER['PHP_SELF'] !== '/wp-admin/admin-ajax.php' ) {
+			wp_redirect( '/login/', 301 );
+			exit;
+		}
+
+		$page      = get_page_by_path( $slug );
+		$parent_id = wp_get_post_parent_id( get_the_ID() );
+
+		// If we are on a child page and the parent id is equal to the Account page, redirect.
+		if ( $parent_id  && $parent_id === $page->ID ) {
+			wp_redirect( '/login/', 301 );
+			exit;
+		}
+	}
 }
-add_action( 'template_redirect', 'oeu_redirect_members_to_login' );
+add_action( 'template_redirect', 'oeu_redirect_account_to_login' );
 
 
 
